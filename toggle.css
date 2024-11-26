@@ -125,14 +125,14 @@ label:active:after {
 }
 
 .message:before {
-  content: "ⲯ﹍︿﹍︿﹍  ﹍ⲯ﹍ⲯ﹍︿﹍☼ Bonjour, que ta journée soit belle.ⲯ﹍︿﹍︿﹍  ﹍ⲯ﹍ⲯ﹍︿﹍☼";
+  content: " ☀️ Que ta journée soit belle ";
   font-size: 4vw;
   color: var(--kiss-text-color);
   text-align: center;
 }
 
 input:checked + .container .message:before {
-  content: '⋆ ˚｡⋆୨୧⋆ ˚｡⋆ Bonne nuit 🌙, que tes rêves soient doux.';
+  content: '⋆ ˚｡⋆୨୧⋆ ˚｡⋆ 🌙 Que tes rêves soient doux.';
   color: #cdb4db;
 }
 
