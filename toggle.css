@@ -1,0 +1,162 @@
+@charset "UTF-8";
+:root {
+  --kiss-text-color: #cdb4db;
+  --toggle-background: #5b2d8f;
+  --toggle-active-background: #330f50;
+  --toggle-button-background: #9d4edd;
+  --container-background: #240046;
+  --container-active-background: #0a001e;
+  --body-background-day: linear-gradient(135deg, #7209b7, #b5179e, #3a0ca3, #560bad);
+  --body-background-night: linear-gradient(135deg, #0b001a, #2c0037, #4b006e, #ff4da6);
+  --neon-border-color: #9d4edd;
+  --neon-gradient: linear-gradient(45deg, #c77dff, #9d4edd, #7b2cbf, #4cc9f0);
+  /* Var mobile */
+  --toggle-width: 120px;
+  --toggle-height: 60px;
+  --toggle-radius: 40px;
+  --button-width: 50px;
+  --button-height: 50px;
+  --button-active-width: 70px;
+  --button-position-top: 5px;
+  --button-position-left: 5px;
+  /* transition toogle  */
+  --transition-duration: 0.3s;
+}
+
+body {
+  background: var(--body-background-day);
+  transition: background var(--transition-duration);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10%;
+  background-color: var(--container-background);
+  transition: background-color var(--transition-duration);
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 6vw;
+  color: #f0eaff;
+  margin: 10px 0;
+  text-align: center;
+  grid-row: 1;
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-row: 2;
+  text-align: center;
+}
+
+p {
+  color: #f0eaff;
+  font-size: 4vw;
+  text-align: center;
+}
+
+input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  grid-column: 2;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  background: var(--toggle-background);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: var(--toggle-radius);
+  position: relative;
+  padding: 0 10px;
+  transition: background var(--transition-duration), box-shadow var(--transition-duration);
+  border: 3px solid transparent;
+  box-shadow: 0 0 10px #9d4edd, 0 0 20px #c77dff, 0 0 30px #ff4da6;
+  grid-row: 3;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: var(--button-position-top);
+  left: var(--button-position-left);
+  width: var(--button-width);
+  height: var(--button-height);
+  background: var(--toggle-button-background);
+  border-radius: 50%;
+  transition: var(--transition-duration);
+  box-shadow: 0 0 10px #c77dff, 0 0 20px #7b2cbf, 0 0 30px #4cc9f0;
+}
+
+input:checked + .container label {
+  background: var(--toggle-active-background);
+  box-shadow: 0 0 10px #4cc9f0, 0 0 20px #7b2cbf, 0 0 30px #ff4da6;
+}
+
+input:checked + .container label:after {
+  left: calc(100% - var(--button-position-left));
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: var(--button-active-width);
+  background-color: #ff4da6;
+}
+
+.message:before {
+  content: "ⲯ﹍︿﹍︿﹍  ﹍ⲯ﹍ⲯ﹍︿﹍☼ Bonjour, que ta journée soit belle.ⲯ﹍︿﹍︿﹍  ﹍ⲯ﹍ⲯ﹍︿﹍☼";
+  font-size: 4vw;
+  color: var(--kiss-text-color);
+  text-align: center;
+}
+
+input:checked + .container .message:before {
+  content: '⋆ ˚｡⋆୨୧⋆ ˚｡⋆ Bonne nuit 🌙, que tes rêves soient doux.';
+  color: #cdb4db;
+}
+
+input:checked ~ body {
+  background: var(--body-background-night);
+}
+
+/* Media Queries pour Desktop */
+@media (min-width: 768px) {
+  :root {
+    --toggle-width: 200px;
+    --toggle-height: 100px;
+    --toggle-radius: 100px;
+    --button-width: 80px;
+    --button-height: 80px;
+    --button-active-width: 110px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  p {
+    font-size: 18px;
+  }
+  .message:before {
+    font-size: 24px;
+  }
+}
